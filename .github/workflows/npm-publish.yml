@@ -12,20 +12,19 @@ on:
 
 jobs:
   build:
-    name: build the angular 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm test
-      - run: ls 
-      - name: Install dependencies
-      - run: npm i 
-      - name: Build the dist floder
-      - run: ng build 
+    - run: npm ci
+    - run: npm test
+    - run: ls 
+    - name: Install dependencies
+    - run: npm i 
+    - name: Build the dist floder
+    - run: ng build 
 
 
   # publish-npm:
