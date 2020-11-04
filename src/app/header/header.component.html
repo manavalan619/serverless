@@ -1,0 +1,69 @@
+<div class="wrapper">
+  <nav id="sidebar" class="active">
+      <div class="sidebar-header">
+          <div class="marginClass">
+            <h4>NIGHT VOYAGER</h4>
+          </div>
+          <div class="marginClass">
+            <a class="close" id="closeIcon"></a>
+          </div>
+      </div>
+      <ul class="list-unstyled components">
+   <li>
+                                                <a class="text" *ngIf='userId!=null'  [routerLink]="['/home']">{{'source.home' | i18next}}</a>
+                                            </li> <li>
+                                                <a class="text" *ngIf="isApplicable('admin') && userId" [routerLink]="['/admin']">{{'source.admin' | i18next}}</a>
+                                            </li>
+<li>
+                                <a href="#onegenerated" *ngIf='userId' data-toggle="collapse" aria-expanded="false" class="dropdown-toggle text">onegenerated</a>
+                                <ul class="collapse list-unstyled" id="onegenerated">
+<li>
+                                        <a class="text" *ngIf='userId' [routerLink]="['/create']">{{'source.create' | i18next}}</a>
+                                    </li>
+<li>
+                                        <a class="text" *ngIf='userId' [routerLink]="['/getall']">{{'source.getall' | i18next}}</a>
+                                    </li>
+<li>
+                                        <a class="text" *ngIf='userId' [routerLink]="['/updatedelete']">{{'source.updatedelete' | i18next}}</a>
+                                    </li>
+<li>
+                                        <a class="text" *ngIf='userId' [routerLink]="['/search']">{{'source.search' | i18next}}</a>
+                                    </li>
+</ul>
+                                </li> <li>
+                                                <a class="text" *ngIf='userId!=null' (click)="logout()">{{'source.logout' | i18next}}</a>
+                                            </li>
+ <li>
+                                                <a class="text" *ngIf='userId==null' [routerLink]="['/login']">{{'source.login' | i18next}}</a>
+                                            </li>
+<li>
+                <a href="#translator" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle text">
+            {{'source.selectLanguage' | i18next }}</a>
+                <ul class="collapse list-unstyled" id="translator">
+                  <li>
+                    <a class="text" *ngFor="let lang of languages" (click)='confirmLangModel(lang)'>{{
+                        'languages.' + lang |
+                        i18nextCap }}</a>
+                  </li>
+                </ul>
+              </li>
+      </ul>
+  </nav>
+  <div id="content" class="active">
+      <a id="nav-toggle"><span></span></a>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'top': '100px','display': confirmLangChangeModal}">
+  <div class="modal-dialog modal-sm" role="dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>language change cause you to re-login</p>
+      </div>
+      <div class="modal-footer" style="padding: 5px">
+        <button type="button" (click)="confirmLangChange()" class="btn btn-default">Confirm</button>
+        <button type="button" (click)="onCloseHandled()" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
