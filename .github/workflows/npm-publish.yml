@@ -26,7 +26,10 @@ jobs:
     - run: npm i 
     # - name: Build the dist floder
     # - run: ng build 
-    - run: echo "hello manavalan-------->>>>>"
+    - run: ng --version
+    # - run: ng build
+    
+
 
 
   # publish-npm:
