@@ -14,7 +14,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: demo
     - uses: actions/checkout@v2
+    - name: demo1
     - uses: actions/setup-node@v1
       with:
         node-version: 12
