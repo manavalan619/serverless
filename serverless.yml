@@ -1,0 +1,82 @@
+
+service: employee
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+
+functions:
+  GpSearch:
+    handler: handler.GpSearch
+    events:
+      - http:
+          path: student/get/search
+          method: get
+          cors: true 
+  GpDelete:
+    handler: handler.GpDelete
+    events:
+      - http:
+          path: student/{id}
+          method: delete
+          cors: true
+  GpCreate:
+    handler: handler.GpCreate
+    events:
+      - http:
+          path: student
+          method: post
+          cors: true
+  GpSearchForUpdate:
+    handler: handler.GpSearchForUpdate
+    events:
+      - http:
+          path: student/get/update
+          method: put
+          cors: true
+  GpUpdate:
+    handler: handler.GpUpdate
+    events:
+      - http:
+          path: student
+          method: put
+          cors: true
+  GpGetAllValues:
+    handler: handler.GpGetAllValues
+    events:
+      - http:
+          path: student/getall
+          method: get
+          cors: true
+  GpGetNounById:
+     handler: handler.GpGetNounById
+     events:
+       - http:
+           path: student/get/{id}
+           method: get
+           cors: true
+  # hello:
+  #   handler: handler.hello
+  #   events: 
+  #     - http:
+  #         path: function3
+  #         method: get
+  #         cors: true
+  # demo:
+  #   handler: handler.demo
+  #   events: 
+  #     - http:
+  #         path: function1
+  #         method: get
+  #         cors: true
+  # demoone:
+  #   handler: handler.two 
+  #   events:
+  #     - http:
+  #         path: function2
+  #         method: get
+  #         cors: true
+plugins:
+  - serverless-offline
