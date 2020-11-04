@@ -22,11 +22,10 @@ jobs:
         node-version: 12
     - run: npm ci
     # - run: npm test
-    # - run: ls 
-    # - name: Install dependencies
-    # - run: npm i 
+    - run: ls 
+    - run: npm i 
     # - name: Build the dist floder
-    # - run: ng build 
+    - run: ng build 
 
 
   # publish-npm:
