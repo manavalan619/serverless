@@ -26,8 +26,8 @@ jobs:
     - run: npm i 
     # - name: Build the dist floder
     # - run: ng build 
-    - run: ng --version
-    # - run: ng build
+    # - run: ng --version
+    - run: npm run build
     
 
 
