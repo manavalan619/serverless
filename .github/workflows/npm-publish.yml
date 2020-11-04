@@ -16,17 +16,17 @@ jobs:
     steps:
     - name: demo
     - uses: actions/checkout@v2
-    - name: demo1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-    - run: npm ci
-    - run: npm test
-    - run: ls 
-    - name: Install dependencies
-    - run: npm i 
-    - name: Build the dist floder
-    - run: ng build 
+    # - name: demo1
+    # - uses: actions/setup-node@v1
+    #   with:
+    #     node-version: 12
+    # - run: npm ci
+    # - run: npm test
+    # - run: ls 
+    # - name: Install dependencies
+    # - run: npm i 
+    # - name: Build the dist floder
+    # - run: ng build 
 
 
   # publish-npm:
