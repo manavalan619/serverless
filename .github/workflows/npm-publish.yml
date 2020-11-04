@@ -16,10 +16,10 @@ jobs:
     steps:
     - name: demo
       uses: actions/checkout@v2
-    # - name: demo1
-    #   uses: actions/setup-node@v1
-    #   with:
-    #     node-version: 12
+    - name: demo1
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
     # - run: npm ci
     # - run: npm test
     # - run: ls 
