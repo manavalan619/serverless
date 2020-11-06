@@ -12,7 +12,7 @@ on:
 
 jobs:
   bucket_creation:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: chrislennon/action-aws-cli@v1.1
       - run: aws s3 ls
