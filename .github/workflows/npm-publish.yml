@@ -42,10 +42,13 @@ jobs:
         # folder: 'dist'
         aws-region: us-west-2
     - name: Deploy static site to S3 bucket
-      run: cd dist
-      run: ls
-      run: pwd
-      run: aws s3 sync ./dist/ s3://demo --delete
+    - run: cd dist
+    - name: path
+    - run: ls
+    - name: path1
+    - run: pwd
+    - name: path3
+    - run: aws s3 sync ./dist/ s3://demo --delete
     
     
     
