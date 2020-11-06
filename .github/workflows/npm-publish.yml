@@ -20,13 +20,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12
-    - run: npm ci
+    # - run: npm ci
     # - run: npm test
-    - run: ls 
-    - run: npm i 
+    # - run: ls 
+    - name: NPM Install
+      run: npm i 
     # - name: Build the dist floder
-    # - run: ng build 
-    - run: npm run build
+    - name: Production Build
+      run: npm run build -- --prod
     
   # deploy: 
   #   needs: build
@@ -42,7 +43,7 @@ jobs:
         # folder: 'dist'
         aws-region: us-west-2
     - name: path1
-      run: cd dist
+      run: cd dist && ls
     - name: path
       run: ls
     - name: Deploy static site to S3 bucket
