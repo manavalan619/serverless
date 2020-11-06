@@ -42,7 +42,7 @@ jobs:
         # folder: 'dist'
         aws-region: us-west-2
     - name: path1
-      run: pwd
+      run: cd dist
     - name: path
       run: ls
     - name: Deploy static site to S3 bucket
