@@ -27,7 +27,7 @@ jobs:
     
   deploy: 
     needs: build
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
     steps:
     - run: ls
     - uses: jakejarvis/s3-sync-action@v0.5.1
