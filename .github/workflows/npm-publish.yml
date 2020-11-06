@@ -25,10 +25,10 @@ jobs:
     - name: Production Build
       run: npm run build -- --prod
     
-  deploy: 
-    needs: build
+  # deploy: 
+    # needs: build
     # runs-on: ubuntu-latest
-    steps:
+    # steps:
     - run: ls
     - uses: jakejarvis/s3-sync-action@v0.5.1
       with:
