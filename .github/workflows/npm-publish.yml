@@ -24,13 +24,12 @@ jobs:
       run: npm i 
     - name: Production Build
       run: npm run build -- --prod
+    steps:  
     - name: Install the aws cli
       uses: chrislennon/action-aws-cli@v1.1
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-      run: aws s3 ls
-    
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}    
   # deploy: 
     # needs: build
     # runs-on: ubuntu-latest
