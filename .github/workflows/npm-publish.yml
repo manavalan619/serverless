@@ -15,11 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: chrislennon/action-aws-cli@v1.1
-      - run: aws s3api create-bucket --bucket geppettomybucket --acl public-read-write --region eu-west-1 --create-bucket-configuration LocationConstraint=eu-west-1
+      - run: aws s3api create-bucket --bucket geppettomybucket --acl public-read --region eu-west-1 --create-bucket-configuration LocationConstraint=eu-west-1
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   build:
+    needs: bucket_creation
     runs-on: ubuntu-latest
     steps:
     - name: demo
@@ -49,7 +50,7 @@ jobs:
       with:
         args: --acl public-read --delete
       env:
-        AWS_S3_BUCKET: githubactions1
+        AWS_S3_BUCKET: geppettomybucket
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         SOURCE_DIR: "dist/creategetall"
