@@ -19,22 +19,17 @@ jobs:
     - name: demo1
       uses: actions/setup-node@v1
       with:
-        node-version: 12
-    # - run: npm ci
-    # - run: npm test
-    # - run: ls 
+        node-version: 12 
     - name: NPM Install
       run: npm i 
-    # - name: Build the dist floder
     - name: Production Build
       run: npm run build -- --prod
     
-  # deploy: 
-  #   needs: build
-  #   runs-on: ubuntu-latest
-    # steps:
+   deploy: 
+     needs: build
+     runs-on: ubuntu-latest
+     steps:
     - run: ls
-    # - uses: actions/checkout@v2
     - uses: jakejarvis/s3-sync-action@v0.5.1
       with:
         args: --acl public-read --delete
@@ -43,49 +38,3 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         SOURCE_DIR: "dist/creategetall"
-        # aws_bucket: ${{ secrets.AWS_BUCKET }}
-        # folder: 'dist'
-    #     aws-region: us-west-2
-    # - name: path1
-    #   run: cd dist && ls
-    # - name: path
-    #   run: ls
-    # - name: Deploy static site to S3 bucket
-    # #   run: cat dist
-    
-    
-    # # - name: path3
-    #   run: aws s3 sync angular.json s3://demo --delete
-    
-    
-    
-
-
-
-  # publish-npm:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #         registry-url: https://registry.npmjs.org/
-  #     - run: npm ci
-  #     - run: npm publish
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-
-  # publish-gpr:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #         registry-url: https://npm.pkg.github.com/
-  #     - run: npm ci
-  #     - run: npm publish
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
