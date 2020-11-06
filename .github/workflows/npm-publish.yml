@@ -11,6 +11,14 @@ on:
     types: [created]
 
 jobs:
+  bucket_creation:
+    run-on: ubuntu-latest
+    steps:
+      - uses: chrislennon/action-aws-cli@v1.1
+      - run: aws s3 ls
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   build:
     runs-on: ubuntu-latest
     steps:
@@ -24,19 +32,19 @@ jobs:
       run: npm i 
     - name: Production Build
       run: npm run build -- --prod
-    - name: Install the aws cli
-      uses: chrislennon/action-aws-cli@v1.1
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-    - id: step1
-      run: aws s3 ls    
+    # - name: Install the aws cli
+    #   uses: chrislennon/action-aws-cli@v1.1
+    #   env:
+    #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+    # - id: step1
+    #   run: aws s3 ls    
   # deploy: 
     # needs: build
     # runs-on: ubuntu-latest
     # steps:
-    - name:
-      run: aws s3 ls
+    # - name:
+    #   run: aws s3 ls
     - uses: jakejarvis/s3-sync-action@v0.5.1
       with:
         args: --acl public-read --delete
