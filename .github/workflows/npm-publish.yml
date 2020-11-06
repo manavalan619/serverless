@@ -32,14 +32,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - run: npm i 
+    - run: ls
     - uses: actions/checkout@master
     - uses: reggionick/s3-deploy@v2
       with:
         aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         aws_bucket: ${{ secrets.AWS_BUCKET }}
-        source_dir: 'dist'
+        folder: 'dist'
     
     
     
