@@ -41,12 +41,13 @@ jobs:
         # aws_bucket: ${{ secrets.AWS_BUCKET }}
         # folder: 'dist'
         aws-region: us-west-2
+    - name: path1
+      run: pwd
     - name: Deploy static site to S3 bucket
-      # run: cat dist
+    #   run: cat dist
     # - name: path
       # run: ls
-    # - name: path1
-      # run: pwd
+    
     # - name: path3
       run: aws s3 sync angular.json s3://demo --delete
     
