@@ -4,7 +4,6 @@
 name: Node.js Package
 
 on:
-  runs-on: ubuntu-latest
   push:
     branches:
       - 'feature/ng_build'
@@ -13,7 +12,7 @@ on:
 
 jobs:
   build:
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: demo
       uses: actions/checkout@v2
@@ -28,7 +27,7 @@ jobs:
     
   deploy: 
     needs: build
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - run: ls
     - uses: jakejarvis/s3-sync-action@v0.5.1
